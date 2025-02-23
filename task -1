@@ -1,0 +1,88 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+void writeFile(const string& filename) {
+    ofstream outFile(filename); // Open file in write mode
+    if (!outFile) {
+        cerr << "Error opening file for writing!" << endl;
+        return;
+    }
+    
+    string data;
+    cout << "Enter data to write to the file: ";
+    cin.ignore(); // Clear the buffer
+    getline(cin, data);
+    
+    outFile << data << endl;
+    outFile.close();
+    cout << "Data written successfully!" << endl;
+}
+
+void readFile(const string& filename) {
+    ifstream inFile(filename); // Open file in read mode
+    if (!inFile) {
+        cerr << "Error opening file for reading!" << endl;
+        return;
+    }
+    
+    string line;
+    cout << "File Contents:\n";
+    while (getline(inFile, line)) {
+        cout << line << endl;
+    }
+    inFile.close();
+}
+
+void appendFile(const string& filename) {
+    ofstream outFile(filename, ios::app); // Open file in append mode
+    if (!outFile) {
+        cerr << "Error opening file for appending!" << endl;
+        return;
+    }
+    
+    string data;
+    cout << "Enter data to append to the file: ";
+    cin.ignore(); // Clear the buffer
+    getline(cin, data);
+    
+    outFile << data << endl;
+    outFile.close();
+    cout << "Data appended successfully!" << endl;
+}
+
+int main() {
+    string filename = "data.txt";
+    int choice;
+    
+    do {
+        cout << "\nFile Management Tool" << endl;
+        cout << "1. Write to File" << endl;
+        cout << "2. Read from File" << endl;
+        cout << "3. Append to File" << endl;
+        cout << "4. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        
+        switch (choice) {
+            case 1:
+                writeFile(filename);
+                break;
+            case 2:
+                readFile(filename);
+                break;
+            case 3:
+                appendFile(filename);
+                break;
+            case 4:
+                cout << "Exiting program..." << endl;
+                break;
+            default:
+                cout << "Invalid choice! Try again." << endl;
+        }
+    } while (choice != 4);
+    
+    return 0;
+}

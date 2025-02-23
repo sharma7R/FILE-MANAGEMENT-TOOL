@@ -26,3 +26,5 @@ Features of the Application:
 * Error handling for file operations (e.g., checking if a file exists before reading).
 
 * Continuous execution until the user chooses to exit.
+* 
+  output: https://github.com/user-attachments/assets/d5cf3820-f3f7-41ce-b8fd-d498f5d4e54f
